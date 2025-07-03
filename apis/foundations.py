@@ -14,7 +14,7 @@ def get_foundations(api_key: str = Depends(get_api_key)):
     repository = FoundationRepository()
     foundations = repository.get_all()
     return repository.create_response_body(
-        foundations,
+        {'foundations': foundations},
         "Foundations fetched successfully",
         HTTPStatus.OK.value
     )
@@ -24,7 +24,7 @@ def create_foundation(foundation: Foundation, api_key: str = Depends(get_api_key
     repository = FoundationRepository()
     created_foundation = repository.create(foundation)
     return repository.create_response_body(
-        created_foundation,
+        {'foundation': created_foundation},
         "Foundation created successfully",
         HTTPStatus.CREATED.value
     )
@@ -34,7 +34,7 @@ def delete_foundation(foundation_id: int, api_key: str = Depends(get_api_key)):
     repository = FoundationRepository()
     repository.delete(foundation_id)
     return repository.create_response_body(
-        None,
+        {},
         "Foundation deleted successfully",
         HTTPStatus.OK.value
     )
@@ -44,7 +44,7 @@ def update_foundation(foundation_id: int, foundation: Foundation, api_key: str =
     repository = FoundationRepository()
     repository.update(foundation_id, foundation)
     return repository.create_response_body(
-        None,
+        {},
         "Foundation updated successfully",
         HTTPStatus.OK.value
     )

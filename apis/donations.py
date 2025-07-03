@@ -39,7 +39,7 @@ def create_donation(
     )
     
     return donation_repository.create_response_body(
-        created_donation,
+        {'donation': created_donation},
         "Donation created successfully",
         HTTPStatus.CREATED.value
     )

@@ -18,10 +18,3 @@ app = FastAPI(
 # Incluir los routers
 app.include_router(foundation_app, prefix="/api/v1")
 app.include_router(donation_app, prefix="/api/v1")
-@app.get("/")
-def read_root():
-    return {"message": "Pet Foundation API - Bienvenido!", "version": "1.0.0"}
-
-@app.get("/health")
-def health_check():
-    return {"status": "healthy"} 

@@ -12,7 +12,7 @@ DATABASE_NAME = os.getenv("DATABASE_NAME")
 
 
 class Foundation(SQLModel, table=True):
-    __tablename__ = "foundations"
+    __tablename__: str = "foundations"
     
     id: int = Field(default=None, primary_key=True)
     name: str
@@ -22,7 +22,7 @@ class Foundation(SQLModel, table=True):
     deleted_at: datetime = Field(default=None, nullable=True)
     
 class Donation(SQLModel, table=True):
-    __tablename__ = "donations"
+    __tablename__: str = "donations"
     
     id: int = Field(default=None, primary_key=True)
     person_name: str
@@ -30,7 +30,7 @@ class Donation(SQLModel, table=True):
     created_at: datetime = Field(default=datetime.now(), nullable=False)
 
 class GoalCategory(SQLModel, table=True):
-    __tablename__ = "goal_categories"
+    __tablename__: str = "goal_categories"
     
     id: int = Field(default=None, primary_key=True)
     name: str
@@ -41,7 +41,7 @@ class GoalCategory(SQLModel, table=True):
     )
     
 class Goal(SQLModel, table=True):
-    __tablename__ = "goals"
+    __tablename__: str = "goals"
     
     id: int = Field(default=None, primary_key=True)
     description: str
