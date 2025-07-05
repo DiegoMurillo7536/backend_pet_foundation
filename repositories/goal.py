@@ -13,7 +13,5 @@ class GoalRepository(BaseRepository):
         session.add(goal)
         session.commit()
         return goal
-    
-    def get_by_id(self, id: int):
-        return with_db_session(lambda session: self._fetch_goal_by_id(session, id))
+
     

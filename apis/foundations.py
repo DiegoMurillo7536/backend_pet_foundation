@@ -48,3 +48,15 @@ def update_foundation(foundation_id: int, foundation: Foundation, api_key: str =
         "Foundation updated successfully",
         HTTPStatus.OK.value
     )
+    
+
+@foundation_app.get("/{foundation_id}/goals")
+def get_goals_by_foundation_id(foundation_id: int, api_key: str = Depends(get_api_key)):
+    repository = FoundationRepository()
+    goals = repository.get_all_with_goals_and_actual_amount_by_id(foundation_id)
+    response = repository.create_response_body(
+        {'goals': goals},
+        "Goals fetched successfully",
+        HTTPStatus.OK.value
+    )
+    return response
